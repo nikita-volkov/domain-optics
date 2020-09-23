@@ -1,8 +1,6 @@
 module DomainOptics.Deriver
 (
   labelOptic,
-  lensLabelOptic,
-  prismLabelOptic,
 )
 where
 
@@ -15,37 +13,23 @@ import qualified Optics.Core as Optics
 
 
 labelOptic =
-  lensLabelOptic <> prismLabelOptic
-
-lensLabelOptic =
-  Domain.Deriver $ pure . fieldLensLabelOpticInstanceDecs
-
-prismLabelOptic =
-  Domain.Deriver $ pure . prismLabelOpticInstanceDecs
+  Domain.Deriver $ pure . labelOpticInstanceDecs
 
 
 -- *
 -------------------------
 
-prismLabelOpticInstanceDecs =
+labelOpticInstanceDecs =
   \ case
     Domain.TypeDec a b -> case b of
       Domain.CompositeTypeDef Domain.SumComposition c ->
         fmap (uncurry (sumConLabelOpticInstanceDecs a)) c
       Domain.EnumTypeDef c ->
         fmap (emptyConLensLabelOpticInstanceDecs a) c
-      _ ->
-        []
-
-fieldLensLabelOpticInstanceDecs =
-  \ case
-    Domain.TypeDec a b -> case b of
       Domain.CompositeTypeDef Domain.ProductComposition c ->
         fmap (uncurry (typeDefFieldLensLabelOpticInstanceDecs a)) c
       Domain.WrapperTypeDef c ->
         [typeDefFieldLensLabelOpticInstanceDecs a "value" c]
-      _ ->
-        []
 
 emptyConLensLabelOpticInstanceDecs a b =
   emptyConLensLabelOpticInstanceDec
