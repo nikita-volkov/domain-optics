@@ -1,4 +1,1 @@
-resolver: https://raw.githubusercontent.com/nikita-volkov/stack-snapshot/a6eaa07968c998552957af3c8ea935dfe4fa10aa/snapshot.yaml
-extra-deps:
-- git: https://github.com/nikita-volkov/domain
-  commit: c9adf86b6fb9182aafafb26739ef87da5c834a1e
+resolver: https://raw.githubusercontent.com/nikita-volkov/stack-snapshot/5b872c204fb5c46e17c56bdf5cbb7673a669cad3/snapshot.yaml
