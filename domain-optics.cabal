@@ -42,4 +42,4 @@ test-suite demo
     domain,
     domain-optics,
     optics,
-    rerebase >=1.7.4 && <2
+    rerebase >=1.9 && <2
