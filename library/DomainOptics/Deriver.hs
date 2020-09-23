@@ -12,6 +12,10 @@ import qualified Data.Char as Char
 import qualified Optics.Core as Optics
 
 
+{-|
+Generates 'LabelOptic' instances for wrappers, enums, products and sums,
+automatically choosing the appropriate optic type.
+-}
 labelOptic =
   Domain.Deriver $ pure . labelOpticInstanceDecs
 
