@@ -30,6 +30,8 @@ labelOpticInstanceDecs =
         fmap (uncurry (typeDefFieldLensLabelOpticInstanceDecs a)) c
       Domain.WrapperTypeDef c ->
         [typeDefFieldLensLabelOpticInstanceDecs a "value" c]
+      _ ->
+        []
 
 emptyConLensLabelOpticInstanceDecs a b =
   emptyConLensLabelOpticInstanceDec
