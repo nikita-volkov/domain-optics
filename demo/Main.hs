@@ -11,5 +11,5 @@ import qualified DomainOptics.Deriver as Deriver
 main =
   return ()
 
-load False Deriver.labelOptic
+load (Just True) Deriver.labelOptic
   "samples/1.yaml"

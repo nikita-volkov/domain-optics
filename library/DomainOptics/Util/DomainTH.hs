@@ -17,19 +17,11 @@ typeType =
     Domain.AppType a b ->
       AppT (typeType a) (typeType b)
     Domain.RefType a ->
-      typeRefType a
+      ConT (textName a)
     Domain.ListType ->
       ListT
     Domain.TupleType a ->
       TupleT a
-
-typeRefType =
-  ConT . textName . typeRefNameText
-
-typeRefNameText =
-  \ case
-    Domain.LocalTypeRef a -> a
-    Domain.GlobalTypeRef a b -> Text.intercalate "." a <> "." <> b
 
 recordFieldName a b =
   textName (mapFirstChar Char.toLower a <> mapFirstChar Char.toUpper b)
