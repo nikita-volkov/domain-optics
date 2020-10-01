@@ -1,4 +1,4 @@
-{-# LANGUAGE UndecidableInstances #-}
+{-# LANGUAGE UndecidableInstances, DuplicateRecordFields #-}
 module Main
 where
 
@@ -11,5 +11,5 @@ import qualified DomainOptics.Deriver as Deriver
 main =
   return ()
 
-load (Just True) Deriver.labelOptic
+load (Just (True, False)) Deriver.labelOptic
   "samples/1.yaml"

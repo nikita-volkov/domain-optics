@@ -6,7 +6,7 @@ where
 
 import DomainOptics.Prelude
 import Language.Haskell.TH
-import DomainOptics.Util.TH
+import THLego.Helpers
 import qualified Domain.Deriver as Domain
 import qualified Data.Char as Char
 import qualified Data.Text as Text

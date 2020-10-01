@@ -1,9 +1,9 @@
-module DomainOptics.TH
+module DomainOptics.InstanceDecs
 where
 
 import DomainOptics.Prelude
 import Language.Haskell.TH.Syntax
-import DomainOptics.Util.TH
+import THLego.Helpers
 import qualified Domain.Deriver as Domain
 import qualified Data.Text as Text
 import qualified Data.Char as Char
@@ -12,11 +12,10 @@ import qualified DomainOptics.Util.OpticsTH as OpticsTH
 import qualified DomainOptics.Util.DomainTH as DomainTH
 
 
-
 -- *
 -------------------------
 
-labelOpticInstanceDecs (Domain.TypeDec typeName typeDef) =
+labelOptic (Domain.TypeDec typeName typeDef) =
   case typeDef of
     Domain.ProductTypeDef members ->
       zipWith zipper (enumFrom 0) members

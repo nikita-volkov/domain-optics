@@ -3,7 +3,7 @@ where
 
 import DomainOptics.Prelude
 import qualified Domain.Deriver as Domain
-import qualified DomainOptics.TH as TH
+import qualified DomainOptics.InstanceDecs as InstanceDecs
 
 
 {-|
@@ -13,4 +13,4 @@ automatically choosing the appropriate optic type.
 Requires to have the @UndecidableInstances@ extension enabled.
 -}
 labelOptic =
-  Domain.Deriver $ pure . TH.labelOpticInstanceDecs
+  Domain.Deriver $ pure . InstanceDecs.labelOptic

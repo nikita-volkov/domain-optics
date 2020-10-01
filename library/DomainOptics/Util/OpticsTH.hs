@@ -6,7 +6,8 @@ where
 
 import DomainOptics.Prelude
 import Language.Haskell.TH
-import DomainOptics.Util.TH
+import THLego.Helpers
+import qualified THLego.Lambdas as Lambdas
 import qualified Optics.Core as Optics
 import qualified Data.Text as Text
 
@@ -19,9 +20,9 @@ productLensE conName numMembers index =
   AppE (AppE (VarE 'Optics.lens) getterE) setterE
   where
     getterE =
-      productGetterE conName numMembers index
+      Lambdas.productGetter conName numMembers index
     setterE = 
-      productSetterE conName numMembers index
+      Lambdas.productSetter conName numMembers index
 
 {-|
 >prism' Dog (\ case
@@ -43,9 +44,9 @@ Prism to a tuple of members.
 prismE :: Name -> Int -> Exp
 prismE conName numMembers =
   multiAppE (VarE 'Optics.prism') [
-    tupleToProductE conName numMembers
+    Lambdas.tupleToProduct conName numMembers
     ,
-    adtConstructorNarrowerE conName numMembers
+    Lambdas.adtConstructorNarrower conName numMembers
     ]
 
 emptyConLensE :: Name -> Exp
@@ -68,7 +69,7 @@ namedFieldLensE fieldName =
     getterE =
       VarE fieldName
     setterE = 
-      namedFieldSetterE fieldName
+      Lambdas.namedFieldSetter fieldName
 
 
 -- * LabelOptic instances
