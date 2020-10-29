@@ -48,7 +48,7 @@ Prism to a tuple of members.
 prismE :: Name -> Int -> Exp
 prismE conName numMembers =
   multiAppE (VarE 'Optics.prism') [
-    Lambdas.tupleToProduct conName numMembers
+    Lambdas.tupleOrSingletonToProduct conName numMembers
     ,
     Lambdas.adtConstructorNarrower conName numMembers
     ]
