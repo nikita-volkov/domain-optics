@@ -15,6 +15,10 @@ import qualified Data.Text as Text
 -- * Optics
 -------------------------
 
+productLensVlE :: Name -> Int -> Int -> Exp
+productLensVlE conName numMembers index =
+  AppE (VarE 'Optics.lensVL) (Lambdas.vlLens conName numMembers index)
+
 productLensE :: Name -> Int -> Int -> Exp
 productLensE conName numMembers index =
   AppE (AppE (VarE 'Optics.lens) getterE) setterE
@@ -110,7 +114,7 @@ labelOpticInstanceD lit opticType typeName aAndBType exp =
 fieldLensLabelOpticInstanceDec :: TyLit -> Name -> Type -> Int -> Int -> Dec
 fieldLensLabelOpticInstanceDec lit typeName aAndBType numMembers index =
   labelOpticInstanceD lit ''Optics.A_Lens typeName aAndBType
-    (productLensE typeName numMembers index)
+    (productLensVlE typeName numMembers index)
 
 {-|
 >instance (k ~ A_Prism, a ~ String, b ~ String) => LabelOptic "dog" k Pet Pet a b where

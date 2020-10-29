@@ -4,20 +4,17 @@ where
 import DomainOptics.Prelude
 import Language.Haskell.TH.Syntax
 import THLego.Helpers
-import qualified Domain.Deriver as Domain
-import qualified Data.Text as Text
-import qualified Data.Char as Char
-import qualified Optics.Core as Optics
 import qualified DomainOptics.Util.OpticsTH as OpticsTH
-import qualified DomainOptics.Util.DomainTH as DomainTH
+import qualified DomainCore.Model as Model
+import qualified DomainCore.TH as DomainTH
 
 
 -- *
 -------------------------
 
-labelOptic (Domain.TypeDec typeName typeDef) =
+labelOptic (Model.TypeDec typeName typeDef) =
   case typeDef of
-    Domain.ProductTypeDef members ->
+    Model.ProductTypeDef members ->
       zipWith zipper (enumFrom 0) members
       where
         membersLength =
@@ -29,7 +26,7 @@ labelOptic (Domain.TypeDec typeName typeDef) =
             (DomainTH.typeType fieldType)
             membersLength
             fieldIndex
-    Domain.SumTypeDef structure ->
+    Model.SumTypeDef structure ->
       fmap mapper structure
       where
         mapper (memberName, subTypes) =
@@ -38,22 +35,3 @@ labelOptic (Domain.TypeDec typeName typeDef) =
             (textName typeName)
             (DomainTH.sumConstructorName typeName memberName)
             (fmap DomainTH.typeType subTypes)
-    Domain.EnumTypeDef memberNames ->
-      fmap mapper memberNames
-      where
-        mapper memberName =
-          OpticsTH.prismLabelOpticInstanceDec
-            (textTyLit memberName)
-            (textName typeName)
-            (DomainTH.sumConstructorName typeName memberName)
-            []
-    Domain.WrapperTypeDef type_ ->
-      pure $
-      OpticsTH.fieldLensLabelOpticInstanceDec
-        (textTyLit "value")
-        (textName typeName)
-        (DomainTH.typeType type_)
-        1
-        0
-    _ ->
-      []

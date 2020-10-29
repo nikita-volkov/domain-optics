@@ -1,8 +1,8 @@
-module DomainOptics.Deriver
+module DomainOptics
 where
 
 import DomainOptics.Prelude
-import qualified Domain.Deriver as Domain
+import qualified DomainCore.Deriver as Deriver
 import qualified DomainOptics.InstanceDecs as InstanceDecs
 
 
@@ -12,5 +12,5 @@ automatically choosing the appropriate optic type.
 
 Requires to have the @UndecidableInstances@ extension enabled.
 -}
-labelOptic =
-  Domain.Deriver $ pure . InstanceDecs.labelOptic
+labelOpticDeriver =
+  Deriver.effectless InstanceDecs.labelOptic
