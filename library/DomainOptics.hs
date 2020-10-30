@@ -7,7 +7,7 @@ import qualified DomainOptics.InstanceDecs as InstanceDecs
 
 
 {-|
-Generates 'LabelOptic' instances for wrappers, enums, products and sums,
+Generates 'LabelOptic' instances for enums, products and sums,
 automatically choosing the appropriate optic type.
 
 Requires to have the @UndecidableInstances@ extension enabled.
