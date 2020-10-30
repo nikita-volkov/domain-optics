@@ -1,4 +1,9 @@
-{-# LANGUAGE UndecidableInstances, DuplicateRecordFields #-}
+{-# LANGUAGE
+  QuasiQuotes, TemplateHaskell,
+  FlexibleInstances, MultiParamTypeClasses,
+  DataKinds, TypeFamilies,
+  UndecidableInstances
+  #-}
 module Main
 where
 
