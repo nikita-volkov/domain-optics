@@ -28,7 +28,7 @@ library
   build-depends:
     base >=4.12 && <5,
     domain-core >=0.1 && <0.2,
-    optics-core >=0.3.0.1 && <0.4,
+    optics-core >=0.3.0.1 && <0.5,
     text >=1 && <2,
     template-haskell >=2.14 && <3,
     template-haskell-compat-v0208 >=0.1.5 && <0.2,
