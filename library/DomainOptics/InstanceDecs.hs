@@ -1,15 +1,14 @@
-module DomainOptics.InstanceDecs
-where
+module DomainOptics.InstanceDecs where
 
-import DomainOptics.Prelude
-import Language.Haskell.TH.Syntax
-import THLego.Helpers
-import qualified DomainOptics.Util.OpticsTH as OpticsTH
 import qualified DomainCore.Model as Model
 import qualified DomainCore.TH as DomainTH
-
+import DomainOptics.Prelude
+import qualified DomainOptics.Util.OpticsTH as OpticsTH
+import Language.Haskell.TH.Syntax
+import THLego.Helpers
 
 -- *
+
 -------------------------
 
 labelOptic (Model.TypeDec typeName typeDef) =

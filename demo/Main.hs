@@ -1,22 +1,24 @@
-{-# LANGUAGE
-  QuasiQuotes, TemplateHaskell,
-  FlexibleInstances, MultiParamTypeClasses,
-  DataKinds, TypeFamilies,
-  UndecidableInstances
-  #-}
-module Main
-where
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE QuasiQuotes #-}
+{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE UndecidableInstances #-}
 
-import Prelude
+module Main where
+
 import Domain
 import DomainOptics
 import Optics
-
+import Prelude
 
 main =
   return ()
 
-declare Nothing labelOpticDeriver
+declare
+  Nothing
+  labelOpticDeriver
   [schema|
 
     ServiceAddress:
