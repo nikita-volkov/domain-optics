@@ -7,10 +7,6 @@ import qualified DomainOptics.Util.OpticsTH as OpticsTH
 import Language.Haskell.TH.Syntax
 import THLego.Helpers
 
--- *
-
--------------------------
-
 labelOptic (Model.TypeDec typeName typeDef) =
   case typeDef of
     Model.ProductTypeDef members ->

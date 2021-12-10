@@ -11,8 +11,6 @@ import qualified THLego.Lambdas as Lambdas
 
 -- * Optics
 
--------------------------
-
 productLensVlE :: Name -> Int -> Int -> Exp
 productLensVlE conName numMembers index =
   AppE (VarE 'Optics.lensVL) (Lambdas.vlLens conName numMembers index)
@@ -80,8 +78,6 @@ namedFieldLensE fieldName =
       Lambdas.namedFieldSetter fieldName
 
 -- * LabelOptic instances
-
--------------------------
 
 -- |
 -- General definition helper.
