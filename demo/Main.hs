@@ -4,15 +4,16 @@
 {-# LANGUAGE QuasiQuotes #-}
 {-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE TypeOperators #-}
 {-# LANGUAGE UndecidableInstances #-}
 
 module Main where
 
 import Domain
 import DomainOptics
-import Optics
 import Prelude
 
+main :: IO ()
 main =
   return ()
 
