@@ -2,7 +2,6 @@
 -- TH utils for optics.
 module DomainOptics.Util.OpticsTH where
 
-import qualified Data.Text as Text
 import DomainOptics.Prelude
 import Language.Haskell.TH
 import qualified Optics.Core as Optics
@@ -37,7 +36,7 @@ singleMemberPrismE conName =
         [VarP aName]
         ( CaseE
             (VarE aName)
-            [ Match (Compat.conp conName [VarP bName]) (NormalB (AppE (ConE 'Just) (VarE bName))) [],
+            [ Match (Compat.conP conName [VarP bName]) (NormalB (AppE (ConE 'Just) (VarE bName))) [],
               Match WildP (NormalB (ConE 'Nothing)) []
             ]
         )
@@ -62,7 +61,7 @@ emptyConLensE conName =
         [VarP aName]
         ( CaseE
             (VarE aName)
-            [ Match (Compat.conp conName []) (NormalB (ConE 'True)) [],
+            [ Match (Compat.conP conName []) (NormalB (ConE 'True)) [],
               Match WildP (NormalB (ConE 'False)) []
             ]
         )
