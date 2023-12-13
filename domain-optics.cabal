@@ -1,6 +1,6 @@
 cabal-version: 3.0
 name:          domain-optics
-version:       0.1.0.3
+version:       0.1.0.4
 synopsis:      Integration of domain with optics
 homepage:      https://github.com/nikita-volkov/domain-optics
 bug-reports:   https://github.com/nikita-volkov/domain-optics/issues
